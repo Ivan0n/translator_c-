@@ -331,5 +331,22 @@ namespace translator
 
 			return false;
 		}
-	}
+
+        /*!
+		 * @brief ReplaceWord in dictionary.
+		 * @param[in] word In which noun word to change the word.
+		 * @param[in] NewtranslatedWord Significance for translation change.
+		 * @return True - Successfully modified; False - Change error.
+		 */
+        public bool ReplaceWord(string word, string NewtranslatedWord)
+        {
+            if(this.DictionaryTranslate.Any(x => x.Key == word))
+			{
+				this._dictionaryTranslate[word] = NewtranslatedWord;
+				return true;
+				
+			}
+            return false;
+        }
+    }
 }
