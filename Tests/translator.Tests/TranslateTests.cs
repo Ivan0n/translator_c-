@@ -11,7 +11,7 @@ namespace translator.Tests
 			Translate test = new Translate(); //< The creation of our class
 
 			string key = "hello";
-			test.AddWord(key, "ïðèâåò"); //< Adding a word
+			test.AddWord(key, "Ð¿Ñ€Ð¸Ð²ÐµÑ‚"); //< Adding a word
 
 			Assert.True(test.FindWord(key) && test.DictionaryTranslate.ContainsKey(key)); //< Checking the search method
 		}
@@ -25,12 +25,13 @@ namespace translator.Tests
 			Translate test = new Translate(); ///< The creation of our class
 
 			string word = "hello";
-			string translatedWord = "ïðèâåò";
+			string translatedWord = "Ð¿Ñ€Ð¸Ð²ÐµÑ‚";
 
 			test.AddWord(word, translatedWord); ///< Adding a word
 
 			Assert.True(test.DictionaryTranslate.Count > 0); ///< Checking if word was added
 		}
+<<<<<<< HEAD
         [Fact]
         public void FileCreateTest()
         {
@@ -41,5 +42,34 @@ namespace translator.Tests
 			File.Delete("./DictionaryTranslate/test.lge");
 
 		}
+=======
+    
+    [Fact]
+    public void FileCreateTest()
+    {
+        Translate test = new Translate(); ///< The creation of our class
+        test.CreateFile("test");
+        Assert.True(File.Exists("./DictionaryTranslate/test.lge"));
+
+        File.Delete("./DictionaryTranslate/test.lge");
+>>>>>>> 1f98959f3a3008d071b0ff04c8fec9cdf9c0aa84
     }
+
+		[Fact]
+		/*! 
+		* @brief Checking the Add test for DeleteWord method.
+		*/
+		public void DeleteWordTest()
+		{
+            Translate test = new Translate();///< The creation of our class
+
+			string word = "hello";
+            string translatedWord = "Ð¿Ñ€Ð¸Ð²ÐµÑ‚";
+
+			test.AddWord(word, translatedWord);///< Adding a word to dictionary
+
+            test.DeleteWord(word);///< Deleting the word
+            Assert.Empty(test.DictionaryTranslate);///< Checking if word was deleted
+    }
+  }
 }
